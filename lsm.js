@@ -296,4 +296,4 @@
     LSM = new LSManager();
     window.LSM = LSM;
 
-}(window, document, undefined));
+}(window, document));
