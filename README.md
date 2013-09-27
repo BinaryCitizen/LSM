@@ -17,6 +17,9 @@ LSM
     Built for convenience and to be easily extendable, don't attach ten thousand events and set a million values
     inside of a loop and you'll be fine.
     
+    Use the set function and avoid adding or changing object properties directly through dot or bracket notation,
+    doing so means that LSM won't know that your data has been updated and your changes won't be saved.
+    
 Usage
 ===
 
@@ -29,28 +32,28 @@ Usage
     myData.set('bar', {baz: true});
     myData.get();                       // Object {foo: 42, bar: Object}
     myData.get('bar');                  // Object {baz: true}
-    myData.bar.get()                    //Object {baz: true}
-    myData.bar.get('baz')               //true
+    myData.bar.get()                    // Object {baz: true}
+    myData.bar.get('baz')               // true
     
     myData.on('change', function(obj){
         console.log('Object was changed', obj);
     });
     
-    myData.set('zap', 9);               //Object was changed, myData
+    myData.set('zap', 9);               // Object was changed, myData
     
     You may also pass a single object to the set method, and all of its properties will be mapped onto the object instance
     myData.set({
       foo: true,
       bar: false
     });
-    myData.get('foo');                 //true
-    myData.get('bar');                 //false
+    myData.get('foo');                 // true
+    myData.get('bar');                 // false
     
     Create any number of instances:
     var someOtherData = LSM.namespace('someOtherData');
     someOtherData.set('foo', 12);
-    someOtherData.get('foo');         //12
-    myData.get('foo');                //42
+    someOtherData.get('foo');         // 12
+    myData.get('foo');                // 42
     
     etc.
     
