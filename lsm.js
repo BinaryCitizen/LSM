@@ -153,7 +153,7 @@
             len = events.length;
             for(i ; i < len; i++){
                 fn = events[i];
-                fn.call(this);
+                fn(this);
             }
         },
 
@@ -282,6 +282,13 @@
 
         //Delete all data bound to this instance from localstorage.
         destroy: function(){
+            var o;
+            for(o in this._object){
+                if(this.hasOwnProperty(o)){
+                    delete this[o];
+                }
+            }
+            this._object = {};
             LSM._destroy(this._LSMnamespace);
         }
     };
