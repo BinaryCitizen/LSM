@@ -32,8 +32,8 @@ Usage
     myData.set('bar', {baz: true});
     myData.get();                       // Object {foo: 42, bar: Object}
     myData.get('bar');                  // Object {baz: true}
-    myData.bar.get()                    // Object {baz: true}
-    myData.bar.get('baz')               // true
+    myData.bar.get();                   // Object {baz: true}
+    myData.bar.get('baz');              // true
     
     myData.on('change', function(obj){
         console.log('Object was changed', obj);
@@ -61,4 +61,4 @@ Usage
     
     To clear your data from localStorage, use
     myData.destroy();
-    myData.get()                        // Object {}
+    myData.get();                     // Object {}
